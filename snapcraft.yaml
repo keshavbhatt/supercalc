@@ -1,0 +1,34 @@
+name: supercalc
+version: 2.0.0
+summary: Powerful Calculation tool for Ubuntu Linux and derivatives
+confinement: strict
+description: |
+ Bundle of calculation tools.
+ Normal calculator, Scientific calculator, Multiple units converter, Age calculator,
+ BMI Calculator, Currency Converter , Expression Calculator and more to come.
+
+apps:
+  supercalc:
+    command: usr/bin/wrapper
+    plugs:
+      - x11
+      - network
+      - home
+      - unity7
+parts:
+  glue:
+    plugin: copy
+    files:
+       supercalc: usr/bin/
+       wrapper: usr/bin/
+       Trolltech.conf: trollconf/
+    stage-packages:
+      - libqtcore4
+      - libqt4-network
+      - libqtgui4
+      - libqtwebkit4
+      - libstdc++6
+      - libc6
+      - libfontconfig1
+      - libglib2.0-0
+    after: [desktop/qt4] 
